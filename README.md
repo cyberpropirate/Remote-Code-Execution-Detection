@@ -51,11 +51,12 @@ The goal was to locate PowerShell activity containing both Invoke-WebRequest and
 
 ```kql
 
-let VMName = "compromisedmb";
+let target_machine = "compromisedmb";
 DeviceProcessEvents
-| where DeviceName == VMName
-| where InitiatingProcessCommandLine contains "Invoke-WebRequest" and InitiatingProcessCommandLine contains "Start-Process"
-
+| where DeviceName == target_machine
+| where AccountName != "system"
+| where InitiatingProcessCommandLine has_all ("Invoke-WebRequest", "Start-Process")
+| order by Timestamp desc 
 ```
 
 
